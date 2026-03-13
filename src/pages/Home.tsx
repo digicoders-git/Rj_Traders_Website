@@ -8,6 +8,7 @@ import IndustriesSection from '../components/IndustriesSection';
 import ClientsSection from '../components/ClientsSection';
 import MissionVisionSection from '../components/MissionVisionSection';
 import CTASection from '../components/CTASection';
+import InquirySection from '../components/InquirySection';
 
 export default function Home() {
   return (
@@ -24,6 +25,8 @@ export default function Home() {
       <Products />
       
       <StatsSection />
+      
+      <InquirySection />
       
       <IndustriesSection />
       

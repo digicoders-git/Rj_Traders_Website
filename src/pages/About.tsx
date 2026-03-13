@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { COMPANY_DETAILS } from '../constants';
+import InquirySection from '../components/InquirySection';
 
 const CountUp = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
   const [count, setCount] = useState(0);
@@ -48,20 +49,19 @@ const industries = [
   { name: 'Agriculture', icon: Sprout, desc: 'Efficient irrigation and wastewater recycling for sustainable farming.' },
 ];
 
+import aboutHero from '../assets/images/about_hero.png';
+
 export default function About() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&q=80&w=1920"
-            alt="Water Treatment Plant"
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px]" />
-        </div>
+      <section className="relative h-[450px] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${aboutHero})` 
+          }}
+        />
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
@@ -69,10 +69,10 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-4">
+            <h1 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight uppercase">
               About RJ Traders
             </h1>
-            <p className="text-xl md:text-2xl text-primary font-medium">
+            <p className="text-xl md:text-2xl text-primary font-bold">
               Delivering Innovative Water Treatment Solutions
             </p>
           </motion.div>
@@ -172,6 +172,8 @@ export default function About() {
           </motion.div>
         </div>
       </section>
+
+      <InquirySection />
 
       {/* Why Choose Us Section */}
       <section className="py-20">

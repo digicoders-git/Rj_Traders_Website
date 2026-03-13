@@ -10,7 +10,12 @@ interface ProductCardProps {
   key?: string | number;
 }
 
+const productImages = import.meta.glob('../assets/images/products/*.{png,jpg,jpeg,svg,webp}', { eager: true });
+
 export default function ProductCard({ product, index }: ProductCardProps) {
+  const imagePath = `../assets/images/products/${product.image}`;
+  const imageSrc = (productImages[imagePath] as any)?.default || product.image;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -20,12 +25,11 @@ export default function ProductCard({ product, index }: ProductCardProps) {
       whileHover={{ y: -8 }}
       className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100"
     >
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-40 overflow-hidden">
         <img
-          src={product.image}
+          src={imageSrc}
           alt={product.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>

@@ -37,7 +37,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-slate-100">
       <div className="grid md:grid-cols-2 gap-4 mb-4">
         <div>
-          <label className="block text-xs font-bold text-slate-700 mb-1.5">Full Name</label>
+          <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">Full Name *</label>
           <input
             type="text"
             required
@@ -46,7 +46,7 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-bold text-slate-700 mb-1.5">Phone Number</label>
+          <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">Mobile Number *</label>
           <input
             type="tel"
             required
@@ -56,16 +56,15 @@ export default function ContactForm() {
         </div>
       </div>
       <div className="mb-4">
-        <label className="block text-xs font-bold text-slate-700 mb-1.5">Email Address</label>
+        <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">Email Address (Optional)</label>
         <input
           type="email"
-          required
           placeholder="john@example.com"
           className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
         />
       </div>
-      <div className="mb-4">
-        <label className="block text-xs font-bold text-slate-700 mb-1.5">Subject</label>
+      <div className="mb-6">
+        <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">Subject *</label>
         <input
           type="text"
           required
@@ -73,23 +72,14 @@ export default function ContactForm() {
           className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
         />
       </div>
-      <div className="mb-6">
-        <label className="block text-xs font-bold text-slate-700 mb-1.5">Message</label>
-        <textarea
-          required
-          rows={3}
-          placeholder="How can we help you?"
-          className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
-        ></textarea>
-      </div>
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full btn-primary flex items-center justify-center gap-2"
+        className="w-full btn-primary flex items-center justify-center gap-2 py-3"
       >
         {status === 'submitting' ? 'Sending...' : (
           <>
-            Send Message
+            Submit Inquiry
             <Send size={16} />
           </>
         )}

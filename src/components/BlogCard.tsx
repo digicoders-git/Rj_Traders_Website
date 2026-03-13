@@ -19,15 +19,15 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
       transition={{ delay: index * 0.1 }}
       className="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 group flex flex-col h-full"
     >
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-48 overflow-hidden rounded-t-xl">
         <img
           src={blog.image}
           alt={blog.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           referrerPolicy="no-referrer"
         />
         <div className="absolute top-4 left-4">
-          <span className="bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+          <span className="backdrop-blur-md bg-primary/90 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
             {blog.category}
           </span>
         </div>

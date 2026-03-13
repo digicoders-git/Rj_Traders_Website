@@ -4,11 +4,23 @@ import { motion } from 'motion/react';
 import { Calendar, User, ArrowLeft, MessageSquare, Send } from 'lucide-react';
 import { BLOGS } from '../constants';
 import BlogSidebar from '../components/BlogSidebar';
+import InquirySection from '../components/InquirySection';
+
+// Blog Images
+import boilerImg from '../assets/images/blog/boiler-water-treatment.jpg';
+import mbbrImg from '../assets/images/blog/mbbr-technology.jpg';
+import wtpImg from '../assets/images/blog/water-treatment-plant-overview.jpg';
+import roImg from '../assets/images/blog/reverse-osmosis-guide.jpg';
+import stpImg from '../assets/images/blog/sewage-treatment-plant.jpg';
+import etpImg from '../assets/images/blog/effluent-treatment-plant.jpg';
+import iwwImg from '../assets/images/blog/industrial-wastewater-treatment.jpg';
+import ufImg from '../assets/images/blog/ultrafiltration-technology.jpg';
+import dmImg from '../assets/images/blog/demineralization-plant.jpg';
 
 const BLOG_CONTENT: Record<string, any> = {
   'boiler-water-treatment': {
     title: "Boiler Water Treatment: What It Is and How It Works",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1200",
+    image: boilerImg,
     introduction: "Boiler water treatment is a critical process in industrial operations. It involves the chemical and physical treatment of water used in boilers to prevent scale, corrosion, and carryover. Proper treatment ensures the longevity of the equipment and maintains operational efficiency.",
     sections: [
       {
@@ -52,7 +64,7 @@ const BLOG_CONTENT: Record<string, any> = {
   },
   'mbbr-in-stp': {
     title: "What is the full form of MBBR in STP",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
+    image: mbbrImg,
     introduction: "MBBR stands for Moving Bed Biofilm Reactor. It is a highly efficient biological wastewater treatment process that combines the advantages of activated sludge and trickling filters.",
     sections: [
       {
@@ -68,25 +80,109 @@ const BLOG_CONTENT: Record<string, any> = {
     ]
   },
   'importance-of-wtp': {
-    title: "What is a Water Treatment Plant and Its Importance in Preventing Water Pollution",
-    image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200",
-    introduction: "A Water Treatment Plant (WTP) is a facility designed to improve the quality of water to make it appropriate for a specific end-use, such as drinking, industrial supply, or irrigation.",
+    title: "What is a Water Treatment Plant and Its Importance",
+    image: wtpImg,
+    introduction: "A Water Treatment Plant (WTP) is a facility designed to improve the quality of water to make it appropriate for a specific end-use, such as drinking or industrial supply.",
     sections: [
       {
         heading: "Importance in Preventing Pollution",
-        content: "WTPs act as the first line of defense against environmental degradation.",
+        content: "WTPs act as the first line of defense against environmental degradation by removing pathogens and toxic chemicals before water enters the community distribution.",
         list: [
           "Removal of Pathogens: Eliminates harmful bacteria and viruses.",
           "Chemical Neutralization: Removes toxic chemicals and heavy metals.",
-          "Ecosystem Protection: Prevents contaminated water from entering rivers and oceans.",
-          "Resource Recovery: Modern plants can recover energy and nutrients from waste."
+          "Ecosystem Protection: Prevents contaminated water from entering natural water bodies.",
+          "Public Health: Ensures safe drinking water and reduces waterborne diseases."
+        ]
+      }
+    ]
+  },
+  'how-ro-works': {
+    title: "How Reverse Osmosis Works: A Complete Guide",
+    image: roImg,
+    introduction: "Reverse Osmosis (RO) is a sophisticated water purification technology that uses a semi-permeable membrane to remove ions, molecules, and larger particles from drinking water.",
+    sections: [
+      {
+        heading: "The Science Behind RO",
+        content: "In reverse osmosis, an applied pressure is used to overcome osmotic pressure, forcing water from a high-solute concentration to a low-solute concentration.",
+        steps: [
+          { title: "Prefiltration", desc: "Removes sediment and chlorine to protect the sensitive RO membrane." },
+          { title: "The RO Membrane", desc: "The heart of the system where nearly all dissolved solids are removed." },
+          { title: "Postfiltration", desc: "Final polishing to remove any remaining taste or odor." },
+          { title: "Storage & Delivery", desc: "Pure water is stored in a tank and delivered via a dedicated faucet." }
+        ]
+      }
+    ]
+  },
+  'importance-of-stp': {
+    title: "Importance of Sewage Treatment Plants in Urban Areas",
+    image: stpImg,
+    introduction: "Sewage Treatment Plants (STP) are essential urban infrastructure that treat domestic and municipal wastewater to remove contaminants before discharge.",
+    sections: [
+      {
+        heading: "Key Benefits of STP",
+        content: "STPs help maintain the delicate balance of the urban water cycle while preventing epidemics and environmental pollution.",
+        list: [
+          "Disease Prevention: Eliminates pathogens from human waste.",
+          "Environmental Protection: Prevents organic matter from depleting oxygen in rivers.",
+          "Water Reuse: Treated water can be used for landscaping and construction.",
+          "Odor Control: Advanced biological processes neutralize unpleasant odors."
+        ]
+      }
+    ]
+  },
+  'benefits-of-etp': {
+    title: "Benefits of Effluent Treatment Plants for Industries",
+    image: etpImg,
+    introduction: "Effluent Treatment Plants (ETP) are mandatory for industrial units to treat wastewater contaminated with chemicals, oils, and other toxic substances.",
+    sections: [
+      {
+        heading: "Why Industries Need ETP",
+        content: "Implementing an ETP is not just a regulatory requirement but also a step towards sustainable and ethical manufacturing.",
+        list: [
+          "Regulatory Compliance: Avoid heavy penalties from pollution control boards.",
+          "Brand Reputation: Demonstrate commitment to environmental safety.",
+          "Operational Efficiency: Recycled water can be used in various cooling processes.",
+          "Hazardous Waste Removal: Specifically targets toxic industrial pollutants."
+        ]
+      }
+    ]
+  },
+  'industrial-wastewater-solutions': {
+    title: "Industrial Wastewater Treatment Solutions",
+    image: iwwImg,
+    introduction: "Industrial wastewater treatment covers the mechanisms and processes used to treat water that has been contaminated by anthropogenic industrial or commercial activities.",
+    sections: [
+      {
+        heading: "Modern Treatment Technologies",
+        content: "Industry leaders are moving towards Zero Liquid Discharge (ZLD) and advanced oxidation processes to handle complex waste streams.",
+        list: [
+          "Advanced Oxidation: Uses chemical oxidants to break down resistant organic pollutants.",
+          "Membrane Bioreactors (MBR): Combines biological treatment with membrane filtration.",
+          "Evaporation & Crystallization: Key components of ZLD systems for total water recovery."
+        ]
+      }
+    ]
+  },
+  'ultrafiltration-technology': {
+    title: "Ultrafiltration Technology in Water Treatment",
+    image: ufImg,
+    introduction: "Ultrafiltration (UF) is a membrane filtration process that serves as a powerful barrier against bacteria, viruses, and ultra-fine particulates.",
+    sections: [
+      {
+        heading: "Advantages of UF Systems",
+        content: "UF provides high-quality water with consistent results, regardless of variations in source water quality.",
+        list: [
+          "Superior Clarification: Removes nearly all suspended solids and turbidity.",
+          "Microbial Safety: Highly effective at removing pathogens including Giardia and Cryptosporidium.",
+          "Low Footprint: Compact modular designs save valuable floor space.",
+          "Chemical Free: Physical barrier reduces the need for extensive chemical treatment."
         ]
       }
     ]
   },
   'demineralization-plant': {
     title: "What is a Demineralization Water Treatment Plant",
-    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&q=80&w=1200",
+    image: dmImg,
     introduction: "Demineralization (DM) is the process of removing dissolved mineral salts from water using ion exchange. A DM plant typically consists of cation and anion exchangers.",
     sections: [
       {
@@ -97,6 +193,40 @@ const BLOG_CONTENT: Record<string, any> = {
           "Anion Exchange: Removes negatively charged ions like Sulfates and Chlorides.",
           "Mixed Bed: A final polishing stage for ultra-high purity water.",
           "Regeneration: Resins are periodically cleaned with acid and alkali to restore their capacity."
+        ]
+      }
+    ]
+  },
+  'industrial-water-treatment-quality': {
+    title: "How Industrial Water Treatment Plants Improve Water Quality",
+    image: "https://images.unsplash.com/photo-1513828583815-c4988c8984ff?q=80&w=1470&auto=format&fit=crop",
+    introduction: "Industrial water treatment is a multifaceted process designed to remove impurities and contaminants from water used in manufacturing, processing, and cooling. By employing advanced technologies like filtration, chemical dosing, and biological reactors, these plants ensure that water quality meets the rigorous requirements of modern industry while protecting the environment.",
+    sections: [
+      {
+        heading: "1. Primary Filtration and Solids Removal",
+        content: "The first stage of improving water quality involves the physical removal of large particles, debris, and suspended solids. This protects sensitive downstream equipment and improves overall clarity.",
+        list: [
+          "Sedimentation: Allowing heavy solids to settle by gravity in large basins.",
+          "Multi-Grade Sand Filtration: Trapping finer particles within layers of graded sand.",
+          "Screening: Removing larger debris before it enters the primary treatment train."
+        ]
+      },
+      {
+        heading: "2. Chemical Treatment and pH Balancing",
+        content: "Dissolved contaminants require chemical intervention. Precision dosing systems ensure the water chemistry is perfectly balanced for its intended industrial use.",
+        list: [
+          "Coagulation & Flocculation: Clumping small particles together for easier removal.",
+          "pH Adjustment: Neutralizing acidic or alkaline water to prevent corrosion.",
+          "Disinfection: Eliminating harmful bacteria and pathogens using UV or ozone."
+        ]
+      },
+      {
+        heading: "3. Membrane Purification Technology",
+        content: "For ultra-high purity requirements, membrane technologies provide a molecular-level barrier against nearly all contaminants.",
+        list: [
+          "Reverse Osmosis (RO): Removing up to 99% of dissolved salts and ions.",
+          "Ultrafiltration (UF): Blocking bacteria, viruses, and ultra-fine particulates.",
+          "Nanofiltration: Specifically targeting hardness and heavy metals."
         ]
       }
     ]
@@ -258,6 +388,7 @@ export default function BlogDetail() {
           </div>
         </div>
       </div>
+      <InquirySection />
     </motion.div>
   );
 }

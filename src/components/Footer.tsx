@@ -48,11 +48,18 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-8">Quick Links</h4>
             <ul className="space-y-4">
-              {['Home', 'About Us', 'Services', 'Products', 'Blog', 'Contact'].map((link) => (
-                <li key={link}>
-                  <Link to={`/${link.toLowerCase().replace(' ', '-')}`} className="hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'About Us', path: '/about' },
+                { name: 'Services', path: '/services' },
+                { name: 'Products', path: '/products' },
+                { name: 'Blog', path: '/blog' },
+                { name: 'Contact', path: '/contact' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
                     <div className="w-1 h-1 rounded-full bg-red-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    {link}
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -65,7 +72,7 @@ export default function Footer() {
             <ul className="space-y-4">
               {PRODUCTS.slice(0, 5).map((product) => (
                 <li key={product.id}>
-                  <Link to="/products" className="hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
+                  <Link to={`/products/${product.id}`} className="hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
                     <div className="w-1 h-1 rounded-full bg-red-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {product.title}
                   </Link>
@@ -112,7 +119,12 @@ export default function Footer() {
             <span className="hidden md:inline text-slate-800">|</span>
             <Link to="/terms-and-conditions" className="hover:text-red-500 transition-colors">Terms & Conditions</Link>
           </div>
-          <p className="text-slate-600">© 2026 {COMPANY_DETAILS.name}. All Rights Reserved.</p>
+          <p className="text-slate-600">
+            © 2026 {COMPANY_DETAILS.name}. All Rights Reserved. Developed by{' '}
+            <a href="https://digicoders.in" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold">
+              DigiCoders
+            </a>
+          </p>
         </div>
       </div>
     </footer>

@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, CheckCircle2, Phone, Mail } from 'lucide-react';
 import { PRODUCTS, COMPANY_DETAILS } from '../constants';
+import InquirySection from '../components/InquirySection';
+
+const productImages = import.meta.glob('../assets/images/products/*.{png,jpg,jpeg,svg,webp}', { eager: true });
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
@@ -10,12 +13,15 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="pt-32 pb-20 text-center">
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">Product Not Found</h2>
+      <div className="pt-16 pb-12 text-center">
+        <h2 className="text-2xl font-bold text-slate-900 mb-2">Product Not Found</h2>
         <Link to="/products" className="text-primary hover:underline">Back to Products</Link>
       </div>
     );
   }
+
+  const imagePath = `../assets/images/products/${product.image}`;
+  const imageSrc = (productImages[imagePath] as any)?.default || product.image;
 
   // Default lists if not provided in constants
   const defaultBenefits = [
@@ -44,7 +50,7 @@ export default function ProductDetail() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-24 pb-20 bg-white"
+      className="pt-16 pb-12 bg-white"
     >
       <div className="container mx-auto px-4">
         {/* Back Link */}
@@ -57,11 +63,12 @@ export default function ProductDetail() {
         </Link>
 
         {/* Hero Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-6">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
+            className="flex flex-col justify-center"
           >
             <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
               {product.title}
@@ -85,14 +92,15 @@ export default function ProductDetail() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
-            className="rounded-3xl overflow-hidden shadow-2xl"
+            className="flex justify-center lg:justify-end"
           >
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-auto object-cover"
-              referrerPolicy="no-referrer"
-            />
+            <div className="relative w-full max-w-[520px] h-[320px] lg:h-[380px] overflow-hidden rounded-xl shadow-lg border border-slate-100">
+              <img
+                src={imageSrc}
+                alt={product.title}
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
           </motion.div>
         </div>
 
@@ -103,7 +111,7 @@ export default function ProductDetail() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-2"
           >
             <h2 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
               <span className="w-8 h-1 bg-primary rounded-full" />
@@ -128,21 +136,19 @@ export default function ProductDetail() {
                 </>
               )}
               {product.detailedExplanation && (
-                <div className="mt-6">
+                <div className="mt-2">
                   {product.detailedExplanation.split('\n\n').map((para, i) => (
                     <p key={i}>{para}</p>
                   ))}
                 </div>
               )}
             </div>
-          </motion.section>
-
-          {/* Section 2 – Benefits */}
+          </motion.section>          {/* Section 2 – Benefits */}
           <motion.section 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-2"
           >
             <h2 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
               <span className="w-8 h-1 bg-primary rounded-full" />
@@ -157,13 +163,17 @@ export default function ProductDetail() {
               ))}
             </div>
           </motion.section>
+        </div>
 
+        <InquirySection />
+
+        <div className="max-w-4xl mx-auto">
           {/* Section 3 – Key Features */}
           <motion.section 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-2"
           >
             <h2 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
               <span className="w-8 h-1 bg-primary rounded-full" />
@@ -178,23 +188,6 @@ export default function ProductDetail() {
               ))}
             </div>
           </motion.section>
-
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-slate-900 rounded-3xl p-8 md:p-12 text-center text-white"
-          >
-            <h3 className="text-2xl md:text-3xl font-black mb-4">Need More Details?</h3>
-            <p className="text-slate-400 mb-8 max-w-xl mx-auto">
-              Our experts are ready to provide you with a customized solution for your water treatment needs. Contact us today for a free consultation.
-            </p>
-            <Link to="/contact" className="btn-primary inline-flex items-center gap-2 px-10 py-4">
-              Contact Us for More Details
-              <ArrowLeft size={18} className="rotate-180" />
-            </Link>
-          </motion.div>
         </div>
       </div>
     </motion.div>

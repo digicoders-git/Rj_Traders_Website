@@ -4,6 +4,8 @@ import { MapPin, Phone, Mail, Clock, CheckCircle2, Shield, Zap, Headphones } fro
 import ContactForm from '../components/ContactForm';
 import { COMPANY_DETAILS } from '../constants';
 
+import contactHero from '../assets/images/wttreet.jpg';
+
 export default function Contact() {
   const contactInfo = [
     {
@@ -47,15 +49,13 @@ export default function Contact() {
   return (
     <div className="bg-white">
       {/* Hero Banner */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&q=80&w=2000"
-            alt="Water Treatment Plant"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px]" />
-        </div>
+      <section className="relative h-[450px] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${contactHero})` 
+          }}
+        />
         
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,7 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center px-4"
         >
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight uppercase">
             Get In <span className="text-primary">Touch</span>
           </h1>
           <div className="w-20 h-1.5 bg-primary mx-auto rounded-full" />
@@ -108,10 +108,11 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="max-w-xl"
             >
               <div className="mb-8">
-                <h2 className="text-3xl font-black text-slate-900 mb-4">Send Us a Message</h2>
-                <p className="text-slate-600">Fill out the form below and our team will get back to you within 24 hours.</p>
+                <h2 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">Quick <span className="text-primary">Inquiry</span></h2>
+                <p className="text-slate-600 font-medium leading-relaxed">Fill out the simplified form below and our technical team will get back to you within 24 hours.</p>
               </div>
               <ContactForm />
             </motion.div>

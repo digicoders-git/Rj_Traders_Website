@@ -2,11 +2,12 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PRODUCTS } from '../constants';
 import ProductCard from '../components/ProductCard';
+import InquirySection from '../components/InquirySection';
 
 export default function ProductsPage() {
   return (
     <div className="pt-24 pb-20 bg-slate-50 min-h-screen">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 mb-20">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,6 +30,7 @@ export default function ProductsPage() {
           ))}
         </div>
       </div>
+      <InquirySection />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { BLOGS } from '../constants';
 import BlogCard from '../components/BlogCard';
 import BlogSidebar from '../components/BlogSidebar';
+import InquirySection from '../components/InquirySection';
 
 export default function Blog() {
   return (
@@ -23,7 +24,7 @@ export default function Blog() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-3 gap-12 items-start">
           {/* Blog Grid */}
           <div className="lg:col-span-2">
             <div className="grid md:grid-cols-2 gap-8">
@@ -34,11 +35,12 @@ export default function Blog() {
           </div>
 
           {/* Sidebar */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 sticky top-28">
             <BlogSidebar />
           </div>
         </div>
       </div>
+      <InquirySection />
     </div>
   );
 }

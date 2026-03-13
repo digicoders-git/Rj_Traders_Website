@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import InquirySection from './InquirySection';
 
 interface PolicyLayoutProps {
   title: string;
@@ -46,6 +47,7 @@ export default function PolicyLayout({ title, children }: PolicyLayoutProps) {
           </motion.div>
         </div>
       </section>
+      <InquirySection />
     </div>
   );
 }
